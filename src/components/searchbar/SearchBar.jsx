@@ -1,6 +1,7 @@
 // import style from './SearchBar.module.css';
 import toast from 'react-hot-toast';
 import { FaSearch } from 'react-icons/fa';
+import { IconContext } from 'react-icons';
 
 export const SearchBar = ({ onSearch }) => {
   const handleSubmit = e => {
@@ -19,10 +20,12 @@ export const SearchBar = ({ onSearch }) => {
   return (
     <header>
       <form onSubmit={handleSubmit}>
-        <button type="submit">
-          <FaSearch />
-        </button>
-        <input type="text" autoComplete="off" placeholder="Search images and photos" name="query"/>
+        <IconContext.Provider value={{ size: '2em'}}>
+          <button type="submit">
+            <FaSearch />
+          </button>
+        </IconContext.Provider>
+        <input type="text" autoComplete="off" placeholder="Search images and photos" name="query" />
       </form>
     </header>
   );

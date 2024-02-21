@@ -1,14 +1,14 @@
 // import style from "./ImageGallery.module.css";
+import { ImageCard } from '../imagecard/ImageCard';
 
-export const ImageGallery = () => {
+export const ImageGallery = ({ items, onClick }) => {
   return (
     <ul>
-      {/* Набір елементів списку із зображеннями */}
-      <li>
-        <div>
-          <img src="" alt="" />
-        </div>
-      </li>
+      {items.map(item => (
+        <li key={item.id} onClick={() => onClick(item)}>
+          <ImageCard />
+        </li>
+      ))}
     </ul>
   );
 };
