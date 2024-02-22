@@ -4,8 +4,8 @@ import { FaSearch } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 
 export const SearchBar = ({ onSearch }) => {
-  const handleSubmit = e => {
-    if (e.target.elements.query.value === '') {
+  const handleSubmit = evt => {
+    if (evt.target.elements.query.value === '') {
       toast.error('This is an empty field. Please write something!', {
         duration: 2000,
         position: 'top-center',
@@ -13,8 +13,8 @@ export const SearchBar = ({ onSearch }) => {
       return;
     }
 
-    onSearch(e.target.elements.query.value);
-    e.target.reset();
+    onSearch(evt.target.elements.query.value);
+    evt.target.reset();
   };
 
   return (
@@ -30,3 +30,5 @@ export const SearchBar = ({ onSearch }) => {
     </header>
   );
 };
+
+// export default SearchBar;

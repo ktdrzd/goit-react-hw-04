@@ -7,3 +7,4 @@ export const ImageCard = ({ item: { urls, alt_description } }) => {
     </div>
   );
 };
+// export default ImageCard;

@@ -7,3 +7,5 @@ export const LoadMoreBtn = ({onClick}) => {
         </div>
     )
 }
+
+export default LoadMoreBtn;

@@ -1,3 +1,6 @@
+import { useState, useEffect, useRef } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
+import { nanoid } from 'nanoid';
 import { SearchBar } from './searchbar/SearchBar';
 import { ImageGallery } from './gallery/ImageGallery';
 import { Loader } from './loader/Loader';
@@ -5,9 +8,6 @@ import { LoadMoreBtn } from './loadmore/LoadMoreBtn';
 import { ErrorMessage } from './error/ErrorMessage';
 import { ImageModal } from './imagemodal/ImageModal';
 import fetch from './api';
-import { useState, useEffect, useRef } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
-import { nanoid } from 'nanoid';
 
 export function App() {
   const [query, setQuery] = useState('');
@@ -24,7 +24,8 @@ export function App() {
     const id = nanoid(5);
     setQuery(`${id}-${newQuery}`);
     setPage(1);
-    setImages([]), (totalPages.current = 0);
+    setImages([]);
+    totalPages.current = 0;
   };
 
   useEffect(() => {
@@ -52,6 +53,7 @@ export function App() {
         setLoad(false);
       }
     }
+
     fetchImages();
   }, [query, page]);
 
@@ -79,11 +81,11 @@ export function App() {
       {images.length > 0 && <ImageGallery items={images} onClick={openModal} />}
       {load && <Loader />}
       {error && <ErrorMessage />}
-      {selectedItem && (
-        <ImageModal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} />
-      )}
-      {images.length > 0 && !load && (<LoadMoreBtn onClick={handleClick}/>)}
-      <Toaster/>
+      {selectedItem && 
+        <ImageModal isOpen={modalIsOpen} onAfterOpen={afterOpenModal} onRequestClose={closeModal} selectedItem={selectedItem}/>
+      }
+      {images.length > 0 && !load && (<LoadMoreBtn onClick={handleClick} />)}
+      <Toaster />
     </div>
   );
 }

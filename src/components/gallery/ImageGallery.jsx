@@ -6,9 +6,11 @@ export const ImageGallery = ({ items, onClick }) => {
     <ul>
       {items.map(item => (
         <li key={item.id} onClick={() => onClick(item)}>
-          <ImageCard />
+          <ImageCard item={item}/>
         </li>
       ))}
     </ul>
   );
 };
+
+// export default ImageGallery;
