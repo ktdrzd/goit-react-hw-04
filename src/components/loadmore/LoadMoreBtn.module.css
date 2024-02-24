@@ -1,0 +1,17 @@
+.button {
+  border-color: bisque;
+  border-width: 3px;
+}
+
+.button:hover {
+  border-color: SaddleBrown;
+  border-width: 3px;
+}
+
+.cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1700px;
+  padding-bottom: 15px;
+}

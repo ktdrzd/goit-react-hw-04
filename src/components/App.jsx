@@ -7,7 +7,7 @@ import { Loader } from './loader/Loader';
 import { LoadMoreBtn } from './loadmore/LoadMoreBtn';
 import { ErrorMessage } from './error/ErrorMessage';
 import { ImageModal } from './imagemodal/ImageModal';
-import fetch from './api';
+import {fetch} from './api';
 
 export function App() {
   const [query, setQuery] = useState('');
@@ -33,29 +33,28 @@ export function App() {
       return;
     }
 
-    async function fetchImages() {
-      try {
-        setLoad(true);
-        setError(false);
-        const fetchedData = await fetch(query.split('-')[1], page);
-        setImages(prevImages => [...prevImages, ...fetchedData.results]);
-        totalPages.current = fetchedData.total_pages;
+  async function fetchImages() {
+    try {
+      setLoad(true);
+      setError(false);
 
-        if (totalPages.current === 0) {
-          toast.error('Oops, please try another word!', {
-            duration: 2000,
-            position: 'bottom-center',
-          });
-        }
-      } catch {
-        setError(true);
-      } finally {
-        setLoad(false);
+      const fetchedData = await fetch(query, page);
+      setImages((prevPhotos) => [...prevPhotos, ...fetchedData.results]);
+      totalPages.current = fetchedData.total_pages;
+
+      if (totalPages.current === 0) {
+    
+        console.log('No results found');
       }
+    } catch (error) {
+      setError(true);
+    } finally {
+      setLoad(false);
     }
+  }
 
-    fetchImages();
-  }, [query, page]);
+  fetchImages();
+}, [query, page]);
 
   const handleClick = () => {
     setPage(page + 1);

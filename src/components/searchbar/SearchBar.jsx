@@ -1,10 +1,12 @@
-// import style from './SearchBar.module.css';
+import style from './SearchBar.module.css';
 import toast from 'react-hot-toast';
 import { FaSearch } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 
 export const SearchBar = ({ onSearch }) => {
   const handleSubmit = evt => {
+    evt.preventDefault();
+
     if (evt.target.elements.query.value === '') {
       toast.error('This is an empty field. Please write something!', {
         duration: 2000,
@@ -18,14 +20,16 @@ export const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <header>
-      <form onSubmit={handleSubmit}>
-        <IconContext.Provider value={{ size: '2em'}}>
-          <button type="submit">
-            <FaSearch />
+    <header className={style.container}>
+      <form onSubmit={handleSubmit} className={style.form}>
+        <IconContext.Provider value={{ size: '1em' }}>
+          <button type="submit" className={style.button}>
+            <div className={style.center}>
+              <FaSearch className={style.icon} />
+            </div>
           </button>
         </IconContext.Provider>
-        <input type="text" autoComplete="off" placeholder="Search images and photos" name="query" />
+        <input className={style.input} type="text" autoComplete="off" placeholder="Search images and photos" name="query" />
       </form>
     </header>
   );

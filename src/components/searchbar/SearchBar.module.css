@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: bisque;
+  width: 1700px;
+  padding: 15px;
+}
+
+.form {
+    display: flex;
+    gap: 10px;
+}
+
+.button {
+  width: 10px;
+  height: 30px;
+  position: relative;
+  background-color: bisque;
+  border-color: bisque;
+ 
+}
+
+.button:hover {
+    border-color: SaddleBrown;
+    border-width: 3px;
+}
+
+.button:focus {
+   border: none;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.icon {
+  color: SaddleBrown;
+  background-color: bisque;
+}
+
+.input {
+    border-radius: 5px;
+    border-color: SaddleBrown;
+    font-size: 18px;
+    height: 24px;
+}
