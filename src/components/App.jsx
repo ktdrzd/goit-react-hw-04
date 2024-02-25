@@ -20,20 +20,18 @@ export function App() {
 
   const totalPages = useRef(0);
 
-  const searchImages = async newQuery => {
+  const searchImages = async (newQuery) => {
     const id = nanoid(5);
-    setQuery(`${id}-${newQuery}`);
+    const parsedQuery = `${id}-${newQuery}`;
+    setQuery(parsedQuery);
     setPage(1);
     setImages([]);
     totalPages.current = 0;
+
+    await fetchImages(parsedQuery, 1);
   };
 
-  useEffect(() => {
-    if (query === '') {
-      return;
-    }
-
-  async function fetchImages() {
+  async function fetchImages(query, page) {
     try {
       setLoad(true);
       setError(false);
@@ -43,7 +41,6 @@ export function App() {
       totalPages.current = fetchedData.total_pages;
 
       if (totalPages.current === 0) {
-    
         console.log('No results found');
       }
     } catch (error) {
@@ -53,8 +50,14 @@ export function App() {
     }
   }
 
-  fetchImages();
-}, [query, page]);
+  useEffect(() => {
+    if (query === '') {
+      return;
+    }
+
+    fetchImages(query, page);
+  }, [query, page]);
+  
 
   const handleClick = () => {
     setPage(page + 1);

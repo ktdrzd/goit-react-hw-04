@@ -3,31 +3,18 @@
   align-items: center;
   justify-content: center;
   background-color: bisque;
-  width: 150px;
   padding: 15px;
 }
 
 .form {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .button {
-  width: 10px;
-  height: 30px;
   position: relative;
   background-color: bisque;
-  border-color: bisque;
- 
-}
-
-.button:hover {
-    border-color: SaddleBrown;
-    border-width: 3px;
-}
-
-.button:focus {
-   border: none;
+  border: none;
 }
 
 .center {
@@ -48,8 +35,8 @@
 }
 
 .input {
-    border-radius: 5px;
-    border-color: SaddleBrown;
-    font-size: 18px;
-    height: 24px;
+  border-radius: 5px;
+  border-color: SaddleBrown;
+  font-size: 18px;
+  height: 24px;
 }

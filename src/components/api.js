@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const accessKey = "8EeWQKyGcZl2ihyI--zxq0z_CbJm5j9tV_lSduiO4jY";
+const accessKey = "WXscGX51EC0JKCUzK7D3LVs7YYNeKVokrtLiFwXU6LA";
 
 export const fetch = async (query, page = 1 ) => {
     const response = await axios.get(
@@ -13,5 +13,3 @@ export const fetch = async (query, page = 1 ) => {
     });
     return response.data;
 }
-
-// export default fetch;
