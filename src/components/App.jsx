@@ -22,21 +22,19 @@ export function App() {
 
   const searchImages = async (newQuery) => {
     const id = nanoid(5);
-    const parsedQuery = `${id}-${newQuery}`;
-    setQuery(parsedQuery);
+    setQuery(`${id}-${newQuery}`);
     setPage(1);
     setImages([]);
     totalPages.current = 0;
 
-    await fetchImages(parsedQuery, 1);
   };
 
   async function fetchImages(query, page) {
     try {
       setLoad(true);
       setError(false);
-
-      const fetchedData = await fetch(query, page);
+      const parsedQuery = query.split('-')[1];
+      const fetchedData = await fetch(parsedQuery, page);
       setImages((prevPhotos) => [...prevPhotos, ...fetchedData.results]);
       totalPages.current = fetchedData.total_pages;
 
